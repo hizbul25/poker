@@ -131,14 +131,15 @@ class PokerRun
      */
     public function displaySummary()
     {
-        $output[] = "------------------";
-        $output[] = "Poker Game Result";
-        $output[] = "------------------";
-
+        $output = [];
+        $rank = [];
         foreach ($this->players as $player) {
             $output[] = $player->displaySummary();
+            $rank[] = $player->getRank();
         }
-        $output[] = '';
-        return implode("\n", $output);
+        $result = array_combine($output, $rank);
+        arsort($result);
+        $result[] = '';
+        return implode("\n", array_keys($result));
     }
 }

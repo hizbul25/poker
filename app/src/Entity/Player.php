@@ -23,6 +23,8 @@ class Player
      */
     private $cards = [];
 
+    private $rank = [];
+
     public function __construct($name)
     {
         $this->setName($name);
@@ -90,9 +92,12 @@ class Player
     public function displaySummary()
     {
         $hand = [];
+        $weight = [];
         foreach ($this->cards as $card) {
             $hand[] = $card;
+            $weight[] = array_flip(Card::ALLOWED_VALUES)[$card->getValue()];
         }
+        $this->setRank(array_sum($weight));
         $output = [];
 
         $output[] = sprintf(" - %s", $this->getName());
@@ -101,6 +106,23 @@ class Player
         return implode("\n", $output);
     }
 
+    /**
+     * Set rank
+     * @param $rank
+     */
+    private function setRank($rank)
+    {
+        $this->rank = $rank;
+    }
+
+    /**
+     * Get rank
+     * @return array
+     */
+    public function getRank()
+    {
+        return $this->rank;
+    }
     /**
      * clean output for when this class is echo'd to screen
      *
