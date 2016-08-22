@@ -132,7 +132,7 @@ class PokerRun
     public function displaySummary()
     {
         $output[] = "------------------";
-        $output[] = "Poker Game Summary";
+        $output[] = "Poker Game Result";
         $output[] = "------------------";
 
         foreach ($this->players as $player) {

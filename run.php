@@ -13,6 +13,8 @@ use App\Entity\Deck;
 use App\Entity\Player;
 
 
+$players = ['Edwin', 'Albert', 'Winnie', 'Antoine'];
+
 $pokerRun = new PokerRun(new Deck());
 
 // lets shuffle the cards
@@ -20,11 +22,11 @@ $pokerRun->shuffleCards();
 
 // 4 players join the table
 for($i = 0; $i < 4; $i++) {
-    $pokerRun->addPlayer(new Player());
+    $pokerRun->addPlayer(new Player($players[$i]));
 }
 
 // deal the cards to the players. default deal = 2 and deal >= 5.
-$pokerRun->setDeal(7);
+$pokerRun->setDeal(5);
 $pokerRun->dealCards();
 // display a summery of the players and the cards they are holding
 print $pokerRun->displaySummary();

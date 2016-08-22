@@ -23,9 +23,9 @@ class Player
      */
     private $cards = [];
 
-    public function __construct()
+    public function __construct($name)
     {
-        $this->setName('Player ' . uniqid());
+        $this->setName($name);
     }
 
     /**

@@ -19,27 +19,29 @@ class Card
      * @var string
      */
     private $value;
-    const allowedSuits = [
+    const ALLOWED_SUITS = [
         'hearts',
         'clubs',
         'spades',
         'diamonds',
     ];
-    const allowedValues = [
-        'ace',
-        'two',
-        'three',
-        'four',
-        'five',
-        'six',
-        'seven',
-        'eight',
-        'nine',
-        'ten',
-        'jack',
-        'queen',
-        'king',
+    
+    const ALLOWED_VALUES = [
+        1 => 'ace',
+        2 => 'two',
+        3 => 'three',
+        4 => 'four',
+        5 => 'five',
+        6 => 'six',
+        7 => 'seven',
+        8 => 'eight',
+        9 => 'nine',
+        10 =>'ten',
+        11 => 'jack',
+        12 => 'queen',
+        13 => 'king'
     ];
+
     public function __construct($suit, $value)
     {
         $this->setSuit($suit)->setValue($value);
@@ -82,7 +84,7 @@ class Card
     {
         // force lower case - we'll forgive some people
         $suit = strtolower($suit);
-        if (in_array($suit, self::allowedSuits) === false) {
+        if (in_array($suit, self::ALLOWED_SUITS) === false) {
             throw new \Exception('Invalid Suit: ' . $suit);
         }
         $this->suit = $suit;
@@ -95,7 +97,7 @@ class Card
     {
         // force lower case - we'll forgive some people
         $value = strtolower($value);
-        if (in_array($value, self::allowedValues) === false) {
+        if (in_array($value, array_values(self::ALLOWED_VALUES)) === false) {
             throw new \Exception('Invalid Value: ' . $value);
         }
         $this->value = $value;

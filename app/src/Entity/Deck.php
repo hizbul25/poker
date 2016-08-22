@@ -64,8 +64,8 @@ class Deck
     public function reset()
     {
         $this->cards = [];
-        foreach(Card::allowedSuits as $suit) {
-            foreach (Card::allowedValues as $value) {
+        foreach(Card::ALLOWED_SUITS as $suit) {
+            foreach (array_values(Card::ALLOWED_VALUES) as $value) {
                 $this->cards[] = new Card($suit, $value);
             }
         }
